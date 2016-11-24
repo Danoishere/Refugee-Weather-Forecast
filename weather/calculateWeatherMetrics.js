@@ -1,3 +1,4 @@
+var i18n = require("i18n");
 var CalculateWeatherMetrics = function(){};
 
 CalculateWeatherMetrics.createForecastMetrics = function(location, hourlyData){
@@ -25,11 +26,55 @@ CalculateWeatherMetrics.createForecastMetrics = function(location, hourlyData){
     location.maxWaveHeightDay = CalculateWeatherMetrics.getMax('swellHeight_m', location.weatherDataDay);
     location.maxWaveHeightNight = CalculateWeatherMetrics.getMax('swellHeight_m', location.weatherDataNight);
 
-
+    location.windDirectionDay = CalculateWeatherMetrics.getWindDirection(location.weatherDataDay);
+    location.windDirectionNight = CalculateWeatherMetrics.getWindDirection(location.weatherDataNight);
 
     return location;
   }
   return false;
+};
+
+
+CalculateWeatherMetrics.getWindDirection = function(hourlyData){
+  var windDirections = [];
+  hourlyData.forEach(function (hour){
+    windDirections.push(hour.winddir16Point);
+  });
+
+  var direction = CalculateWeatherMetrics.mode(windDirections);
+  return i18n.__(direction.toUpperCase());
+};
+
+CalculateWeatherMetrics.mode = function(array)
+{
+  if (array.length === 0)
+  return null;
+
+  var modeMap = {},
+  maxEl = array[0],
+  maxCount = 1;
+
+  for(var i = 0; i < array.length; i++)
+  {
+    var el = array[i];
+
+    if (modeMap[el] === null)
+    modeMap[el] = 1;
+    else
+    modeMap[el]++;
+
+    if (modeMap[el] > maxCount)
+    {
+      maxEl = el;
+      maxCount = modeMap[el];
+    }
+    else if (modeMap[el] == maxCount)
+    {
+      maxEl += '&' + el;
+      maxCount = modeMap[el];
+    }
+  }
+  return maxEl;
 };
 
 CalculateWeatherMetrics.getMax = function(prop, hourlyData){
