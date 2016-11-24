@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<h1>{{title}}</h1>
+{{#each locations}}
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-md-12">
+        <h2>{{this.name}}</h2>
+      </div>
+      <table class="col-sm-6 text-left">
+        <tr>
+          <th class="col-md-6" colspan="2">
+            Day 08:00 - 22:00
+          </th>
+        </tr>
+        <tr>
+          <td class="col-md-3">Temperature</td>
+          <td class="col-md-3">{{this.minTempDay}}-{{this.maxTempDay}}°C</td>
+        </tr>
+        <tr>
+          <td class="col-md-3">Wind Force</td>
+          <td class="col-md-3">{{this.minWindForceDay}}-{{this.maxWindForceDay}}</td>
+        </tr>
+        <tr>
+          <td class="col-md-3">Max Wave Height</td>
+          <td class="col-md-3">{{this.maxWaveHeightDay}}</td>
+        </tr>
+        <tr>
+          <td class="col-md-3">Water Temperature</td>
+          <td class="col-md-3">{{this.minWaterTemperatureDay}}-{{this.maxWaterTemperatureDay}}°C</td>
+        </tr>
+      </table>
+      <table class="col-sm-6">
+        <tr>
+          <th class="col-md-6" colspan="2">
+            Night 22:00 - 08:00
+          </th>
+        </tr>
+        <tr>
+          <td class="col-md-3">Temperature</td>
+          <td class="col-md-3">{{this.minTempDay}}-{{this.maxTempDay}}°C</td>
+        </tr>
+        <tr>
+          <td class="col-md-3">Wind Force</td>
+          <td class="col-md-3">{{this.minWindForceNight}}-{{this.maxWindForceNight}}</td>
+        </tr>
+        <tr>
+          <td class="col-md-3">Max Wave Height</td>
+          <td class="col-md-3">{{this.maxWaveHeightNight}}</td>
+        </tr>
+        <tr>
+          <td class="col-md-3">Water Temperature</td>
+          <td class="col-md-3">{{this.minWaterTemperatureNight}}-{{this.maxWaterTemperatureNight}}°C</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+{{/each}}
+
+<span id="text">{{{__ "text to test"}}}</span>
+<br>
+<span id="onecat">{{{__n "%d cat" "%d cats" 1}}}</span>
+<br>
+<span id="twocats">{{{__n "%d cat" "%d cats" 2}}}</span>
