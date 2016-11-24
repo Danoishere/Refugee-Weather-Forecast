@@ -1,39 +1,52 @@
 <!DOCTYPE html>
-<h1>{{title}}</h1>
+<h1>{{{__ "Refugee Weather Report"}}}</h1>
+
 {{#each locations}}
 <div class="row">
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="col-md-12">
-        <h2>{{this.name}}</h2>
+        <div class="col-md-12">
+          <h2>{{this.name}}</h2>
+        </div>
       </div>
-      <table class="col-sm-6 text-left">
-        <tr>
-          <th class="col-md-6" colspan="2">
-            Day 08:00 - 22:00
-          </th>
-        </tr>
-        <tr>
-          <td class="col-md-3">Temperature</td>
-          <td class="col-md-3">{{this.minTempDay}}-{{this.maxTempDay}}°C</td>
-        </tr>
-        <tr>
-          <td class="col-md-3">Wind Force</td>
-          <td class="col-md-3">{{this.minWindForceDay}}-{{this.maxWindForceDay}}</td>
-        </tr>
-        <tr>
-          <td class="col-md-3">Wind Direction</td>
-          <td class="col-md-3">{{this.windDirectionDay}}</td>
-        </tr>
-        <tr>
-          <td class="col-md-3">Max Wave Height</td>
-          <td class="col-md-3">{{this.maxWaveHeightDay}}</td>
-        </tr>
-        <tr>
-          <td class="col-md-3">Water Temperature</td>
-          <td class="col-md-3">{{this.minWaterTemperatureDay}}-{{this.maxWaterTemperatureDay}}°C</td>
-        </tr>
-      </table>
+      <div class="col-sm-6">
+        <table>
+          <tr>
+            <th class="col-md-6" colspan="2">
+              Day 08:00 - 22:00
+            </th>
+          </tr>
+          <tr>
+            <td class="col-md-3">Temperature</td>
+            <td class="col-md-3">{{this.minTempDay}}-{{this.maxTempDay}}°C</td>
+          </tr>
+          <tr>
+            <td class="col-md-3">Wind Force</td>
+            <td class="col-md-3">{{this.minWindForceDay}}-{{this.maxWindForceDay}}</td>
+          </tr>
+          <tr>
+            <td class="col-md-3">Wind Direction</td>
+            <td class="col-md-3">{{this.windDirectionDay}}</td>
+          </tr>
+          <tr>
+            <td class="col-md-3">Max Wave Height</td>
+            <td class="col-md-3">{{this.maxWaveHeightDay}}</td>
+          </tr>
+          <tr>
+            <td class="col-md-3">Water Temperature</td>
+            <td class="col-md-3">{{this.minWaterTemperatureDay}}-{{this.maxWaterTemperatureDay}}°C</td>
+          </tr>
+           <tr>
+            <td class="col-md-3">
+              <img class="img-responsive icon" src="/images/{{this.waveIconDay}}"/>
+            </td>
+            <td class="col-md-3">
+              <img class="img-responsive icon" src="/images/{{this.waveIconDay}}"/>
+            </td>
+          </tr>
+        </table>
+      </div>
       <br/>
       <table class="col-sm-6">
         <tr>
@@ -61,6 +74,14 @@
           <td class="col-md-3">Water Temperature</td>
           <td class="col-md-3">{{this.minWaterTemperatureNight}}-{{this.maxWaterTemperatureNight}}°C</td>
         </tr>
+        <tr>
+         <td class="col-md-3">
+           <img class="img-responsive icon" src="/images/{{this.waveIconNight}}"/>
+         </td>
+         <td class="col-md-3">
+           <img class="img-responsive icon" src="/images/{{this.waveIconNight}}"/>
+         </td>
+       </tr>
       </table>
     </div>
   </div>

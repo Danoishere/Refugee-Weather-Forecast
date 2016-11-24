@@ -6,3 +6,26 @@ body {
 a {
   color: #00B7FF;
 }
+
+/** NAVIGATION **/
+
+.navbar-img{
+  height: 50px;
+}
+
+.navbar-brand{
+  margin-left:10px !important;
+}
+
+.navbar-default {
+    background-color: #AACADC;
+    border-color: #435C84;
+}
+
+/** FORECAST **/
+
+.icon{
+  max-height: 160px;
+  margin: 20px;
+  margin-left: 0px;
+}

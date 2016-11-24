@@ -29,11 +29,25 @@ CalculateWeatherMetrics.createForecastMetrics = function(location, hourlyData){
     location.windDirectionDay = CalculateWeatherMetrics.getWindDirection(location.weatherDataDay);
     location.windDirectionNight = CalculateWeatherMetrics.getWindDirection(location.weatherDataNight);
 
+    location.waveIconDay = CalculateWeatherMetrics.getWaveIcon(location.maxWaveHeightDay);
+    location.waveIconNight = CalculateWeatherMetrics.getWaveIcon(location.maxWaveHeightNight);
+
     return location;
   }
   return false;
 };
 
+CalculateWeatherMetrics.getWaveIcon = function(waveHeight){
+  if(+waveHeight <= 0.5){
+    return 'Wave0_5.png';
+  }else if(+waveHeight <= 1){
+    return 'Wave1_0.png';
+  }else if(+waveHeight <= 1.5){
+    return 'Wave1_5.png';
+  }else{
+    return 'Wave2_0.png';
+  }
+};
 
 CalculateWeatherMetrics.getWindDirection = function(hourlyData){
   var windDirections = [];
