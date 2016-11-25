@@ -21,9 +21,16 @@ var hbs = expressHbs({
   defaultLayout: 'layout',
   extname: '.hbs',
   helpers: {
-        __: function () {  return i18n.__.apply(this, arguments); },
-        __n: function () { return i18n.__n.apply(this, arguments); }
+    __: function () {  return i18n.__.apply(this, arguments); },
+    __n: function () { return i18n.__n.apply(this, arguments); },
+    toLower: function() {
+      if(arguments !== undefined && arguments['0'] !== undefined){
+        return arguments['0'].toLowerCase();
+      }else{
+        return '';
+      }
     }
+  }
 });
 
 manageLocations.addLocation('Zürich','CH','39.269036','26.507553');
@@ -36,18 +43,18 @@ app.use(cookieParser());
 
 // set up language
 i18n.configure({
-    defaultLocale: 'en',
-    cookie: 'locale',
-    fallbacks: {
-      'fa': 'en',
-      'ar':'en'
-    },
-    queryParameter: 'lang',
-    directoryPermissions: '755',
-    autoReload: true,
-    updateFiles: true,
-    locales:['en', 'ar','fa'],
-    directory: __dirname + '/locales'
+  defaultLocale: 'en',
+  cookie: 'locale',
+  fallbacks: {
+    'fa': 'en',
+    'ar':'en'
+  },
+  queryParameter: 'lang',
+  directoryPermissions: '755',
+  autoReload: true,
+  updateFiles: true,
+  locales:['en', 'ar','fa'],
+  directory: __dirname + '/locales'
 });
 
 

@@ -16,6 +16,9 @@
 	"WNW": "West-northwest",
 	"NNW": "North-northwest",
 	"Hello": "Hello",
+
+	"Search": "Search",
+
 	"Hello %s, how are you today?": "Hello %s, how are you today?",
 	"weekend": "weekend",
 	"Hello %s, how are you today? How was your %s.": "Hello %s, how are you today? How was your %s.",

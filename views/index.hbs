@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <h1>{{{__ "Refugee Weather Report"}}}</h1>
-
+<br/>
+<div class="row">
+  <div class="col-md-6">
+    <input class="form-control" type="text" placeholder="{{{__ 'Search'}}}" />
+  </div>
+</div>
+<br/>
 {{#each locations}}
 <div class="row">
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="col-md-12">
         <div class="col-md-12">
-          <h2>{{this.name}}</h2>
+          <h2 class="location-title">{{this.name}}</h2>
+          <img class="img-responsive flag img-circle" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.7.0/flags/1x1/{{toLower this.countryCode}}.svg" />
         </div>
       </div>
+      <div class="col-md-12 location-header-seperator"></div>
       <div class="col-sm-6">
         <table>
           <tr>
@@ -23,7 +31,7 @@
           </tr>
           <tr>
             <td class="col-md-3">Wind Force</td>
-            <td class="col-md-3">{{this.minWindForceDay}}-{{this.maxWindForceDay}}</td>
+            <td class="col-md-3">Beaufort {{this.minWindForceDay}}-{{this.maxWindForceDay}}</td>
           </tr>
           <tr>
             <td class="col-md-3">Wind Direction</td>
@@ -37,12 +45,12 @@
             <td class="col-md-3">Water Temperature</td>
             <td class="col-md-3">{{this.minWaterTemperatureDay}}-{{this.maxWaterTemperatureDay}}°C</td>
           </tr>
-           <tr>
+          <tr>
             <td class="col-md-3">
               <img class="img-responsive icon" src="/images/{{this.waveIconDay}}"/>
             </td>
             <td class="col-md-3">
-              <img class="img-responsive icon" src="/images/{{this.waveIconDay}}"/>
+              <img class="img-responsive icon icon img-circle" src="{{this.weatherIconDay}}"/>
             </td>
           </tr>
         </table>
@@ -60,7 +68,7 @@
         </tr>
         <tr>
           <td class="col-md-3">Wind Force</td>
-          <td class="col-md-3">{{this.minWindForceNight}}-{{this.maxWindForceNight}}</td>
+          <td class="col-md-3">Beaufort {{this.minWindForceNight}}-{{this.maxWindForceNight}}</td>
         </tr>
         <tr>
           <td class="col-md-3">Wind Direction</td>
@@ -75,13 +83,13 @@
           <td class="col-md-3">{{this.minWaterTemperatureNight}}-{{this.maxWaterTemperatureNight}}°C</td>
         </tr>
         <tr>
-         <td class="col-md-3">
-           <img class="img-responsive icon" src="/images/{{this.waveIconNight}}"/>
-         </td>
-         <td class="col-md-3">
-           <img class="img-responsive icon" src="/images/{{this.waveIconNight}}"/>
-         </td>
-       </tr>
+          <td class="col-md-3">
+            <img class="img-responsive icon" src="/images/{{this.waveIconNight}}"/>
+          </td>
+          <td class="col-md-3">
+            <img class="img-responsive icon img-circle" src="{{this.weatherIconNight}}"/>
+          </td>
+        </tr>
       </table>
     </div>
   </div>

@@ -26,7 +26,7 @@ AccessWeatherData.loadWeatherForLocation = function(location, callback){
     return;
   }
 
-  client.marineWeatherApi({q: location.latitude + "," + location.longitude}, function(err, result) {
+  client.marineWeatherApi({q: location.latitude + "," + location.longitude, isDayTime: 'yes'}, function(err, result) {
     if (!err) {
       var jsonResult = JSON.parse(result);
       // Take hourly data of Day 1 & 2

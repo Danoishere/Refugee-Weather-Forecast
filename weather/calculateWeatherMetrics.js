@@ -1,4 +1,6 @@
 var i18n = require("i18n");
+var beaufort = require('beaufort')
+
 var CalculateWeatherMetrics = function(){};
 
 CalculateWeatherMetrics.createForecastMetrics = function(location, hourlyData){
@@ -13,11 +15,12 @@ CalculateWeatherMetrics.createForecastMetrics = function(location, hourlyData){
     location.maxTempNight = CalculateWeatherMetrics.getMax('tempC', location.weatherDataNight);
     location.minTempNight = CalculateWeatherMetrics.getMin('tempC', location.weatherDataNight);
 
-    location.maxWindForceDay = CalculateWeatherMetrics.getMax('windspeedKmph', location.weatherDataDay);
-    location.minWindForceDay = CalculateWeatherMetrics.getMin('windspeedKmph', location.weatherDataDay);
-    location.maxWindForceNight = CalculateWeatherMetrics.getMax('windspeedKmph', location.weatherDataNight);
-    location.minWindForceNight = CalculateWeatherMetrics.getMin('windspeedKmph', location.weatherDataNight);
-
+    var options = {unit: 'kmh', getName: false};
+    location.maxWindForceDay = beaufort(+CalculateWeatherMetrics.getMax('windspeedKmph', location.weatherDataDay), options);
+    location.minWindForceDay = beaufort(+CalculateWeatherMetrics.getMin('windspeedKmph', location.weatherDataDay), options);
+    location.maxWindForceNight = beaufort(+CalculateWeatherMetrics.getMax('windspeedKmph', location.weatherDataNight), options);
+    location.minWindForceNight = beaufort(+CalculateWeatherMetrics.getMin('windspeedKmph', location.weatherDataNight), options);
+    
     location.maxWaterTemperatureDay = CalculateWeatherMetrics.getMax('waterTemp_C', location.weatherDataDay);
     location.minWaterTemperatureDay = CalculateWeatherMetrics.getMin('waterTemp_C', location.weatherDataDay);
     location.maxWaterTemperatureNight = CalculateWeatherMetrics.getMax('waterTemp_C', location.weatherDataNight);
@@ -32,9 +35,23 @@ CalculateWeatherMetrics.createForecastMetrics = function(location, hourlyData){
     location.waveIconDay = CalculateWeatherMetrics.getWaveIcon(location.maxWaveHeightDay);
     location.waveIconNight = CalculateWeatherMetrics.getWaveIcon(location.maxWaveHeightNight);
 
+    location.weatherIconDay = CalculateWeatherMetrics.getWeatherIcon(location.weatherDataDay);
+    location.weatherIconNight = CalculateWeatherMetrics.getWeatherIcon(location.weatherDataNight);
+
     return location;
   }
   return false;
+};
+
+CalculateWeatherMetrics.getWeatherIcon = function(hourlyData){
+  var iconUrls = [];
+  hourlyData.forEach(function (hour){
+    iconUrls.push(hour.weatherIconUrl[0].value);
+  });
+
+  console.log('icon-url' + CalculateWeatherMetrics.mode(iconUrls));
+
+  return CalculateWeatherMetrics.mode(iconUrls);
 };
 
 CalculateWeatherMetrics.getWaveIcon = function(waveHeight){
