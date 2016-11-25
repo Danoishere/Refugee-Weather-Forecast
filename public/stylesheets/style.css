@@ -40,11 +40,15 @@ a {
 
 .location-title{
   margin:30px;
-  margin-left:20px;
+  margin-left:10px;
   vertical-align: middle;
   display: inline-block;
 }
 
 .location-header-seperator{
   border-bottom: 1px #333;
+}
+
+.grey-text{
+  color: #DDDDDD;
 }
