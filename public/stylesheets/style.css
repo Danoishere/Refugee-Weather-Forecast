@@ -1,6 +1,8 @@
 body {
   padding: 50px;
+  padding-top:20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #EEF0EB;
 }
 
 a {
@@ -15,11 +17,12 @@ a {
 
 .navbar-brand{
   margin-left:10px !important;
+  font-family: 'Lato', sans-serif;
 }
 
 .navbar-default {
     background-color: #AACADC;
-    border-color: #435C84;
+    border-color: #AACADC;
 }
 
 /** FORECAST **/
@@ -50,5 +53,28 @@ a {
 }
 
 .grey-text{
-  color: #DDDDDD;
+  color: #CCCCCC;
+}
+
+.inline{
+  display: inline-block;
+}
+
+.time-header{
+  color: #222;
+  font-size: 20px;
+  padding-bottom: 10px;
+  padding-top:15px;
+  border-bottom: 1px solid #555;
+}
+
+.meta{
+  color: #777;
+  font-size: 15px;
+  padding-top:8px;
+}
+
+.data{
+  color: #222;
+  font-size: 16px;
 }

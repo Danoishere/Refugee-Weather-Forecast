@@ -20,7 +20,7 @@ CalculateWeatherMetrics.createForecastMetrics = function(location, hourlyData){
     location.minWindForceDay = beaufort(+CalculateWeatherMetrics.getMin('windspeedKmph', location.weatherDataDay), options);
     location.maxWindForceNight = beaufort(+CalculateWeatherMetrics.getMax('windspeedKmph', location.weatherDataNight), options);
     location.minWindForceNight = beaufort(+CalculateWeatherMetrics.getMin('windspeedKmph', location.weatherDataNight), options);
-    
+
     location.maxWaterTemperatureDay = CalculateWeatherMetrics.getMax('waterTemp_C', location.weatherDataDay);
     location.minWaterTemperatureDay = CalculateWeatherMetrics.getMin('waterTemp_C', location.weatherDataDay);
     location.maxWaterTemperatureNight = CalculateWeatherMetrics.getMax('waterTemp_C', location.weatherDataNight);
@@ -76,8 +76,7 @@ CalculateWeatherMetrics.getWindDirection = function(hourlyData){
   return i18n.__(direction.toUpperCase());
 };
 
-CalculateWeatherMetrics.mode = function(array)
-{
+CalculateWeatherMetrics.mode = function(array){
   if (array.length === 0)
   return null;
 

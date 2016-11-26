@@ -45,14 +45,7 @@ app.use(cookieParser());
 i18n.configure({
   defaultLocale: 'en',
   cookie: 'locale',
-  fallbacks: {
-    'fa': 'en',
-    'ar':'en'
-  },
-  queryParameter: 'lang',
-  directoryPermissions: '755',
   autoReload: true,
-  updateFiles: true,
   locales:['en', 'ar','fa'],
   directory: __dirname + '/locales'
 });
